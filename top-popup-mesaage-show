@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .main {
+        height: 100vh;
+        width: 100%;
+        background-color: #484848;
+      }
+      .slider {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        background-color: rgb(129, 0, 0);
+        color: #fff;
+        font-weight: 500;
+        text-transform: capitalize;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        width: 100%;
+        height: 2rem;
+        top: -100%;
+        transition: top 0.5s ease 0s;
+      }
+      .show {
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div onclick="show()" class="main">
+      <div class="slider" id="slider">error message show here</div>
+    </div>
+    <script>
+      var x;
+      function show() {
+        clearTimeout(x);
+        document.getElementById("slider").classList.add("show");
+        x = setInterval(() => {
+          document.getElementById("slider").classList.remove("show");
+          clearTimeout(x);
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>
