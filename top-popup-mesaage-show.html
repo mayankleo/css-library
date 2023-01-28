@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demo</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      .main {
-        height: 100vh;
-        width: 100%;
-        background-color: #484848;
-      }
-      .slider {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-        background-color: rgb(129, 0, 0);
-        color: #fff;
-        font-weight: 500;
-        text-transform: capitalize;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        width: 100%;
-        height: 2rem;
-        top: -100%;
-        transition: top 0.5s ease 0s;
-      }
-      .show {
-        top: 0;
-      }
+        body {
+            margin: 0;
+        }
+
+        .errcon {
+            position: absolute;
+            top: 1rem;
+            right: 0;
+            overflow: hidden;
+        }
+
+        .err {
+            position: relative;
+            right: -23vw;
+            width: 21vw;
+            padding: 1vw;
+            border-radius: 1vw;
+            font-size: small;
+            font-family: Circular-Loom;
+            color: #ffffff;
+            transition: right 0.5s ease;
+        }
+
+        .serr {
+            right: 0.1vw;
+        }
     </style>
-  </head>
-  <body>
-    <div onclick="show()" class="main">
-      <div class="slider" id="slider">error message show here</div>
+</head>
+
+<body>
+    <div class="errcon">
+        <div class="err" id="err">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, nihil?</div>
     </div>
+    <button onclick="show(false,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, nihil?')">false me</button>
+    <button onclick="show(true,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, nihil?')">true me</button>
     <script>
-      var x;
-      function show() {
-        clearTimeout(x);
-        document.getElementById("slider").classList.add("show");
-        x = setInterval(() => {
-          document.getElementById("slider").classList.remove("show");
-          clearTimeout(x);
-        }, 5000);
-      }
+        var x;
+        erre = document.getElementById("err");
+        function show(tf=false, mess) {
+            clearTimeout(x);
+            erre.innerHTML = mess
+            erre.style.backgroundColor = tf == false ? "#cd0000" : "#00cd00";
+            erre.classList.add("serr");
+            x = setInterval(() => {
+                erre.classList.remove("serr");
+                clearTimeout(x);
+            }, 4000);
+        }
     </script>
-  </body>
+</body>
+
 </html>
